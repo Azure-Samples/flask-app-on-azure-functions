@@ -1,57 +1,42 @@
-# Project Name
-
-(short, 1-3 sentenced, description of the project)
-
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
-
-## Getting Started
-
-### Prerequisites
-
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+---
+page_type: sample
+languages: 
+- python
+products: 
+- azure
+- azure-functions
+description: "A sample of how to leverage the Flask framework in Azure Functions."
+title: Using the Flask Framework in Azure Functions 
+author: vrdmr, shreyabatra4
+urlFragment: azure-functions-python-create-flask-app
+---
 
 
-## Demo
+# Using Flask in Azure Functions
+  
+## Prerequisites
 
-A demo app is included to show how to use the project.
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python versions](https://docs.microsoft.com/azure/azure-functions/supported-languages#languages-by-runtime-version) that are supported by Azure Functions. For more information, see [How to install Python](https://wiki.python.org/moin/BeginnersGuide/Download).
+- The [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
+- A code editor such as [Visual Studio Code](https://code.visualstudio.com/)
 
-To run the demo, follow these steps:
+### Prerequisite check
 
-(Add steps to start up the demo)
+1. In a terminal or command window, run `func --version` to check that the Azure Functions Core Tools are version 2.7.1846 or later.
+2. Run `python --version` (Linux/MacOS) or `py --version` (Windows) to check your Python version reports to a supported version.
 
-1.
-2.
-3.
+## Setup
 
-## Resources
+1. Clone or download this sample repository.
+2. Open the sample folder in Visual Studio Code or your IDE of choice.
 
-(Any additional resources or related projects)
+## Running the samples
 
-- Link to supporting information
-- Link to similar sample
-- ...
+1. Open a terminal window and cd to the directory that the samples is saved in.
+2. Set the environment variables specified in the sample file you wish to run.
+3. Follow the usage described in the file.
+
+## Next steps
+
+Check out the [Web frameworks](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#web-frameworks) documentation to learn more about altering Python functions to leverage WSGI and ASGI-compatible frameworks.
