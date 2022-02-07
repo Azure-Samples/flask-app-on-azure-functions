@@ -5,38 +5,111 @@ languages:
 products: 
 - azure
 - azure-functions
-description: "A sample of how to leverage the Flask framework in Azure Functions."
-title: Using the Flask Framework in Azure Functions 
+description: "This is a sample Azure Function app created with the Flask framework."
+title: Using the Flask Framework to create an Azure Function app
 author: vrdmr, shreyabatra4
 urlFragment: azure-functions-python-create-flask-app
 ---
 
+# Using the Flask Framework to create an Azure Function
 
-# Using Flask in Azure Functions
+Azure Functions supports WSGI and ASGI-compatible frameworks with HTTP-triggered Python functions. This can be helpful if you are familiar with a particular framework, or if you have existing code you would like to reuse to create the Function app. The following is an example of creating an Azure Function app using Flask.
   
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python versions](https://docs.microsoft.com/azure/azure-functions/supported-languages#languages-by-runtime-version) that are supported by Azure Functions. For more information, see [How to install Python](https://wiki.python.org/moin/BeginnersGuide/Download).
-- The [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
-- A code editor such as [Visual Studio Code](https://code.visualstudio.com/)
+Here are some of the prerequisites to get this sample to work for you.
 
-### Prerequisite check
+**Install Python**
 
-1. In a terminal or command window, run `func --version` to check that the Azure Functions Core Tools are version 2.7.1846 or later.
-2. Run `python --version` (Linux/MacOS) or `py --version` (Windows) to check your Python version reports to a supported version.
+A [Python version](https://docs.microsoft.com/azure/azure-functions/supported-languages#languages-by-runtime-version) that is supported by Azure Functions is required. Run `python --version` (Linux/MacOS) or `py --version` (Windows) to check your Python version reports to a supported version. For more information on installing Python, see [How to install Python](https://wiki.python.org/moin/BeginnersGuide/Download).
+
+**Create a new Azure Function App in VS Code**
+
+To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). In the code snippet along with the sample, we name the two functions 'FlaskApp' and 'HandleApproach' with the HTTP trigger.
 
 ## Setup
 
-1. Clone or download this sample repository.
-2. Open the sample folder in Visual Studio Code or your IDE of choice.
+Clone or download this sample repository, and open the sample folder in Visual Studio Code or your IDE of choice.
 
-## Running the samples
+## Flask Framework in an Azure Function App
 
-1. Open a terminal window and cd to the directory that the samples is saved in.
-2. Set the environment variables specified in the sample file you wish to run.
-3. Follow the usage described in the file.
+The file requirements.txt is updated to include the following depdendencies.
+```python
+azure-functions
+Flask
+```
+Note that `azure-functions-worker` should not be included in this file as the Python worker is manager by Azure Functions platform and manually managing it may cause unexpected issues.
+
+The file function.json is modified to include `route` in the HTTP trigger.
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "/{*route}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+The file host.json is updated to include the HTTP `routePrefix`.
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+  },
+  "extensions": {
+    "http": {
+        "routePrefix": ""
+    }
+  }
+}
+```
+
+## Running the sample
+
+### Testing locally
+
+To test locally, start  debug mode and test the function using the HTTP endpoint exposed after the host and the worker load up the function.
+
+```log
+Http Functions:
+HandleApproach: [GET,POST] http://localhost:7071/api/<route>
+```
+
+### Testing in Azure
+
+You can publish the function app directly from VSCode using the “Publish to Azure option” in the Azure extension. For more information, please refer the guide to [publish the project to Azure using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python#publish-the-project-to-azure).
+
+You can use a tool like Postman to see the API in action locally, and on Azure. Running locally will help you to verify the credentials, configuration and business logic.
+
+## Conclusion
+
+This sample helps you setup an app with the Flask framework and can help you get started using web frameworks in Azure Functions.
 
 ## Next steps
 
-Check out the [Web frameworks](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#web-frameworks) documentation to learn more about altering Python functions to leverage WSGI and ASGI-compatible frameworks.
+To learn more about altering Python functions to leverage WSGI and ASGI-compatible frameworks, see [Web frameworks](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#web-frameworks).
