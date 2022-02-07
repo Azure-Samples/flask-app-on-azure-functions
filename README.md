@@ -106,10 +106,8 @@ You can publish the function app directly from VSCode using the “Publish to Az
 
 You can use a tool like Postman to see the API in action locally, and on Azure. Running locally will help you to verify the credentials, configuration and business logic.
 
-## Conclusion
+## Conclusion and Next Steps
 
 This sample helps you setup an app with the Flask framework and can help you get started using web frameworks in Azure Functions.
-
-## Next steps
 
 To learn more about altering Python functions to leverage WSGI and ASGI-compatible frameworks, see [Web frameworks](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#web-frameworks).
