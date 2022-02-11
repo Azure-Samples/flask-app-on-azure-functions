@@ -69,18 +69,6 @@ The file host.json is updated to include the HTTP `routePrefix`.
 ```json
 {
   "version": "2.0",
-  "logging": {
-    "applicationInsights": {
-      "samplingSettings": {
-        "isEnabled": true,
-        "excludedTypes": "Request"
-      }
-    }
-  },
-  "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle",
-    "version": "[2.*, 3.0.0)"
-  },
   "extensions": {
     "http": {
         "routePrefix": ""
@@ -97,7 +85,7 @@ To test locally, start  debug mode and test the function using the HTTP endpoint
 
 ```log
 Http Functions:
-HandleApproach: [GET,POST] http://localhost:7071/api/<route>
+HandleApproach: [GET,POST] http://localhost:7071/<route>
 ```
 
 ### Testing in Azure
