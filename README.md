@@ -40,6 +40,17 @@ Flask
 ```
 Note that `azure-functions-worker` should not be included in this file as the Python worker is manager by Azure Functions platform and manually managing it may cause unexpected issues.
 
+The following code shows the use of `WsgiMiddleware`, which redirects the invocations to Flask handler.
+```python
+import azure.functions as func
+from FlaskApp import app
+
+def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
+    """Each request is redirected to the WSGI handler.
+    """
+    return func.WsgiMiddleware(app.wsgi_app).handle(req, context)
+```
+
 The file function.json is modified to include `route` in the HTTP trigger.
 ```json
 {
