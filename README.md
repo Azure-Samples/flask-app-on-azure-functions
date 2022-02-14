@@ -17,7 +17,7 @@ Azure Functions supports WSGI and ASGI-compatible frameworks with HTTP-triggered
   
 ## Prerequisites
 
-Here are some of the prerequisites to get this sample to work for you.
+Here are some of the prerequisites to get [this sample](https://github.com/Azure-Samples/flask-app-on-azure-functions/) to work for you.
 
 **Install Python**
 
@@ -29,11 +29,11 @@ Azure Functions Core Tools provides commands to create functions, connect to Azu
 
 **Create a new Azure Function App in VS Code**
 
-To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). In the code snippet along with the sample, we name the two functions 'FlaskApp' and 'HandleApproach' with the HTTP trigger.
+To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). In the code snippet along with the sample, we name the two python module 'FlaskApp' and 'HandleApproach' with the HTTP trigger.
 
 ## Setup
 
-Clone or download this sample repository, and open the sample folder in Visual Studio Code or your IDE of choice.
+Clone or download [this sample](https://github.com/Azure-Samples/flask-app-on-azure-functions/) repository, and open the sample folder in Visual Studio Code or your IDE of choice.
 
 ## Flask Framework in an Azure Function App
 
@@ -113,6 +113,6 @@ You can use a tool like Postman to see the API in action locally, and on Azure. 
 
 ## Conclusion and Next Steps
 
-This sample helps you setup an app with the Flask framework and can help you get started using web frameworks in Azure Functions.
+[This sample](https://github.com/Azure-Samples/flask-app-on-azure-functions/) helps you setup an app with the Flask framework and can help you get started using web frameworks in Azure Functions.
 
 To learn more about altering Python functions to leverage WSGI and ASGI-compatible frameworks, see [Web frameworks](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Cazurecli-linux%2Capplication-level#web-frameworks).
