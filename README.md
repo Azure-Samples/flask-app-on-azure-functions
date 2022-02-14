@@ -23,6 +23,10 @@ Here are some of the prerequisites to get this sample to work for you.
 
 A [Python version](https://docs.microsoft.com/azure/azure-functions/supported-languages#languages-by-runtime-version) that is supported by Azure Functions is required. Run `python --version` (Linux/MacOS) or `py --version` (Windows) to check your Python version reports to a supported version. For more information on installing Python, see [How to install Python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
+**Install Azure Functions Core Tools**
+
+Azure Functions Core Tools provides commands to create functions, connect to Azure, and deploy function projects. For more information, see [Install Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools).
+
 **Create a new Azure Function App in VS Code**
 
 To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). In the code snippet along with the sample, we name the two functions 'FlaskApp' and 'HandleApproach' with the HTTP trigger.
@@ -92,7 +96,9 @@ The file host.json is updated to include the HTTP `routePrefix`.
 
 ### Testing locally
 
-To test locally, start  debug mode and test the function using the HTTP endpoint exposed after the host and the worker load up the function.
+To run Function Apps using Core Tools, see [Run functions locally with Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Cpython%2Cportal%2Cbash#start).
+
+To test locally, start debug mode and test the function using the HTTP endpoint exposed after the host and the worker load up the function.
 
 ```log
 Http Functions:
