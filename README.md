@@ -92,7 +92,27 @@ The file host.json is updated to include the HTTP `routePrefix`.
 }
 ```
 
-In the URL, you can try different routes as well as parameterize them. In the sample, the route is "/hello/<name>".
+You can try different URL routes as well as parameterize them. In the sample, the route in the file `function.json', can be modified from 
+
+```json
+"route": "/{*route}"
+```
+
+to something such as
+
+```json
+"route": "hello/Chris"
+```
+
+to result in the expected output of "hello Chris".
+
+Another option is have the route as module to provide import guidance.
+
+```json
+"route": "module"
+```
+
+In this case, the expected output is "loaded from FlaskApp.package.module = Successfully import module".
 
 ## Running the sample
 
