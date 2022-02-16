@@ -92,7 +92,7 @@ The file host.json is updated to include the HTTP `routePrefix`.
 }
 ```
 
-In the URL, you can try different routes as well as parameterize them.
+In the URL, you can try different routes as well as parameterize them. In the sample, the route is "/hello/<name>".
 
 ## Running the sample
 
