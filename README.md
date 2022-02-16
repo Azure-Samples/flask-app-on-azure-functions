@@ -92,13 +92,21 @@ The file host.json is updated to include the HTTP `routePrefix`.
 }
 ```
 
+In the URL, you can try different routes. In the sample app, the route is with
+
 ## Running the sample
 
 ### Testing locally
 
 To run Function Apps using Core Tools, see [Run functions locally with Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Cpython%2Cportal%2Cbash#start).
 
-To test locally, start debug mode and test the function using the HTTP endpoint exposed after the host and the worker load up the function.
+To test locally, run the below to install Flask.
+
+```log
+pip install -r requirements.txt
+```
+
+Then, start debug mode and test the function using the HTTP endpoint exposed after the host and the worker load up the function.
 
 ```log
 Http Functions:
