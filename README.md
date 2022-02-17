@@ -6,12 +6,12 @@ products:
 - azure
 - azure-functions
 description: "This is a sample Azure Function app created with the Flask framework."
-title: Using the Flask Framework to create an Azure Function app
+title: Using Flask Framework with Azure Functions
 author: vrdmr, shreyabatra4
 urlFragment: azure-functions-python-create-flask-app
 ---
 
-# Using the Flask Framework to create an Azure Function
+# Using Flask Framework with Azure Functions
 
 Azure Functions supports WSGI and ASGI-compatible frameworks with HTTP-triggered Python functions. This can be helpful if you are familiar with a particular framework, or if you have existing code you would like to reuse to create the Function app. The following is an example of creating an Azure Function app using Flask.
   
