@@ -92,7 +92,7 @@ The file host.json is updated to include the HTTP `routePrefix`.
 }
 ```
 
-You can try different URL routes as well as parameterize them. For instance, you can modify from 'http://localhost:7071/{\*route}' to 'http://localhost:7071/hello/Chris'. Another option is have the route as module to provide import guidance, which can be done through changing the url to 'http://localhost:7071/module'.
+You can try a different URL route as well as parameterize it. For instance, you can modify from 'http://localhost:7071/{\*route}' to 'http://localhost:7071/hello/Chris'. Another option is have the route as module to provide import guidance, which can be done through changing the url to 'http://localhost:7071/module'.
 
 ## Running the sample
 
