@@ -92,8 +92,6 @@ The file host.json is updated to include the HTTP `routePrefix`.
 }
 ```
 
-You can try a different URL route as well as parameterize it. For instance, you can modify from 'http://localhost:7071/{\*route}' to 'http://localhost:7071/hello/Chris'. Another option is have the route as module to provide import guidance, which can be done through changing the url to 'http://localhost:7071/module'.
-
 ## Running the sample
 
 ### Testing locally
@@ -118,6 +116,10 @@ HandleApproach: [GET,POST] http://localhost:7071/<route>
 You can publish the function app directly from VSCode using the “Publish to Azure option” in the Azure extension. For more information, please refer the guide to [publish the project to Azure using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python#publish-the-project-to-azure).
 
 You can use a tool like Postman to see the API in action locally, and on Azure. Running locally will help you to verify the credentials, configuration and business logic.
+
+### Calling the URL with Path Parameters
+
+When running this sample, you can try a different URL route as well as parameterize it. For instance, you can modify from 'http://localhost:7071/{\*route}' to 'http://localhost:7071/hello/Chris'. Another option is have the route as module to provide import guidance, which can be done through changing the url to 'http://localhost:7071/module'.
 
 ## Conclusion and Next Steps
 
