@@ -119,7 +119,12 @@ You can use a tool like Postman to see the API in action locally, and on Azure. 
 
 ### Calling the URL with Path Parameters
 
-When running this sample, you can try a different URL route as well as parameterize it. For instance, you can modify from 'http://localhost:7071/{\*route}' to 'http://localhost:7071/hello/Chris'. Another option is have the route as module to provide import guidance, which can be done through changing the url to 'http://localhost:7071/module'.
+When running this sample, you can try a different URL route as well as parameterize it. For instance, `http://<HOST>:7071/hello/Foo` to call the Flask app with path param `Foo`. Another option is have the route as module to provide import guidance, which can be done through changing the url to `http://<HOST>:7071/module`.
+
+When done locally, please try the following URLs in your browser
+```
+http://localhost:7071/hello/Foo
+```
 
 ## Conclusion and Next Steps
 
