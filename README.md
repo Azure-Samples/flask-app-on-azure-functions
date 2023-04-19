@@ -69,7 +69,7 @@ The file function.json is modified to include `route` in the HTTP trigger.
         "get",
         "post"
       ],
-      "route": "/{*route}"
+      "route": "{*route}"
     },
     {
       "type": "http",
