@@ -115,7 +115,22 @@ HandleApproach: [GET,POST] http://localhost:7071/<route>
 
 You can publish the function app directly from VSCode using the “Publish to Azure option” in the Azure extension. For more information, please refer the guide to [publish the project to Azure using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python#publish-the-project-to-azure).
 
-You can use a tool like Postman to see the API in action locally, and on Azure. Running locally will help you to verify the credentials, configuration and business logic.
+You can use one of these HTTP test tools to see the API in action locally, and on Azure:
+
+- [Visual Studio Code](https://code.visualstudio.com/download) with an [extension from Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode)
+- [PowerShell Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)
+- [Microsoft Edge - Network Console tool](/microsoft-edge/devtools-guide-chromium/network-console/network-console-tool)
+- [Bruno](https://www.usebruno.com/)
+- [curl](https://curl.se/)
+
+> [!CAUTION]  
+> For scenarios where you have sensitive data, such as credentials, secrets, access tokens, 
+> API keys, and other similar information, make sure to use a tool that protects your data 
+> with the necessary security features, works offline or locally, doesn't sync your data to 
+> the cloud, and doesn't require that you sign in to an online account. This way, you reduce 
+> the risk around exposing sensitive data to the public.
+
+Running locally helps you to verify the credentials, configuration and business logic.
 
 ### Calling the URL with Path Parameters
 
