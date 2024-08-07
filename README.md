@@ -118,8 +118,8 @@ You can publish the function app directly from VSCode using the “Publish to Az
 You can use one of these HTTP test tools to see the API in action locally, and on Azure:
 
 - [Visual Studio Code](https://code.visualstudio.com/download) with an [extension from Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode)
-- [PowerShell Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)
-- [Microsoft Edge - Network Console tool](/microsoft-edge/devtools-guide-chromium/network-console/network-console-tool)
+- [PowerShell Invoke-RestMethod](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)
+- [Microsoft Edge - Network Console tool](https://learn.microsoft.com/microsoft-edge/devtools-guide-chromium/network-console/network-console-tool)
 - [Bruno](https://www.usebruno.com/)
 - [curl](https://curl.se/)
 
