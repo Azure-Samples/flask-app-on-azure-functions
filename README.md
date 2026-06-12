@@ -7,7 +7,7 @@ products:
 - azure-functions
 description: "This is a sample Azure Function app created with the Flask framework."
 title: Using Flask Framework with Azure Functions
-author: vrdmr, shreyabatra4
+author: gavin-aguiar
 urlFragment: azure-functions-python-create-flask-app
 ---
 
@@ -29,7 +29,7 @@ Azure Functions Core Tools provides commands to create functions, connect to Azu
 
 **Create a new Azure Function App in VS Code**
 
-To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). In the code snippet along with the sample, we name the two python module 'FlaskApp' and 'HandleApproach' with the HTTP trigger.
+To create an Azure Function app in VSCode, please go through the [Microsoft Docs tutorial on creating your first Azure Function using Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python). This sample uses the [Python v2 programming model](https://learn.microsoft.com/azure/azure-functions/functions-reference-python?pivots=python-mode-decorator), where functions are defined with decorators in a single `function_app.py` file and no `function.json` files are required. The Flask application lives in the `FlaskApp` package and is wired into the Functions host from `function_app.py`.
 
 ## Setup
 
@@ -42,48 +42,33 @@ The file requirements.txt is updated to include the following depdendencies.
 azure-functions
 Flask
 ```
-Note that `azure-functions-worker` should not be included in this file as the Python worker is manager by Azure Functions platform and manually managing it may cause unexpected issues.
+Note that `azure-functions-worker` should not be included in this file as the Python worker is manager by Azure Functions platform and manually managing it may cause unexpected issues. The v2 programming model requires `azure-functions` version 1.11.1 or later; leaving the dependency unpinned installs the latest version.
 
-The following code shows the use of `WsgiMiddleware`, which redirects the invocations to Flask handler.
+In the v2 programming model, the `function_app.py` file at the project root uses `WsgiFunctionApp` to redirect every invocation to the Flask (WSGI) handler. No `function.json` file is needed.
 ```python
 import azure.functions as func
-from FlaskApp import app
 
-def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
-    """Each request is redirected to the WSGI handler.
-    """
-    return func.WsgiMiddleware(app.wsgi_app).handle(req, context)
+# Import the Flask app defined in the FlaskApp package.
+from FlaskApp import app as flask_app
+
+# WsgiFunctionApp wires the WSGI-compatible Flask app directly into the
+# Functions host. No function.json is required.
+app = func.WsgiFunctionApp(
+    app=flask_app.wsgi_app,
+    http_auth_level=func.AuthLevel.FUNCTION,
+)
 ```
 
-The file function.json is modified to include `route` in the HTTP trigger.
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "{*route}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
+The HTTP route and authorization level are configured directly on `WsgiFunctionApp` (via `http_auth_level`), so the previous `function.json` binding file has been removed. `WsgiFunctionApp` automatically handles all routes and forwards them to Flask.
 
-The file host.json is updated to include the HTTP `routePrefix`.
+The file host.json uses extension bundle v4 and sets an empty HTTP `routePrefix` so the Flask routes are served from the root path.
 ```json
 {
   "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[4.*, 5.0.0)"
+  },
   "extensions": {
     "http": {
         "routePrefix": ""
@@ -108,7 +93,7 @@ Then, start debug mode and test the function using the HTTP endpoint exposed aft
 
 ```log
 Http Functions:
-HandleApproach: [GET,POST] http://localhost:7071/<route>
+http_app_func: [GET,POST,DELETE,HEAD,PATCH,PUT,OPTIONS] http://localhost:7071/<route>
 ```
 
 ### Testing in Azure
